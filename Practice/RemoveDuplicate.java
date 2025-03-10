@@ -2,39 +2,36 @@ package Practice;
 
 public class RemoveDuplicate {
 
-    public static void removeDup()
-    {
-        int[] arr = {4,4,7,3,2,1,5,5,7,2,2,4};
-        int j = 0;
+    public static void printDuplicates() {
+        int[] arr = {4, 4, 7, 3, 2, 1, 5, 5, 7, 2, 2, 4};
+        int n = arr.length;
 
-        for(int i = 0; i < arr.length - 1; i++)
-        {
+        boolean[] checked = new boolean[n];
+
+        for (int i = 0; i < n; i++) {
+            if (checked[i]) {
+                continue;
+            }
+
             boolean isDuplicate = false;
-            for(int k = 0; k < j; k++)
-            {
-                if(arr[i] == arr[k])
-                {
+            for (int j = i + 1; j < n; j++) {
+                if (arr[i] == arr[j]) {
                     isDuplicate = true;
-                    break;
+                    checked[j] = true;
                 }
             }
 
-            if(!isDuplicate)
-            {
-                arr[j] = arr[i];
-                j++;
+            if (isDuplicate) {
+                System.out.print(arr[i] + " ");
             }
         }
-
-
-        for(int i = 0; i < j; i++)
-        {
-            System.out.print(arr[i]+" ");
-        }
     }
+
 
     public static void main(String[] args) {
-
-        removeDup();
+        printDuplicates();
     }
+
 }
+
+
